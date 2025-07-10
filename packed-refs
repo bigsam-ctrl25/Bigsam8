@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled sorted 
+49566b9d35741f88b67039f8b5f6595f7d28cbaa refs/remotes/origin/dependabot/pip/numpy-1.22.0
+cce8f510e236227568799572bc79403d20d05bef refs/remotes/origin/dependabot/pip/pillow-9.3.0
+40857033fa12a9b596b5a16178c79cd8a925886d refs/remotes/origin/dependabot/pip/requests-2.31.0
+90572c4fba5ce758b0ab450160faddf801c46a7d refs/remotes/origin/dependabot/pip/tensorflow-2.11.1
+be837a4f7da60531e863f595ef78449672f2f89d refs/remotes/origin/master
