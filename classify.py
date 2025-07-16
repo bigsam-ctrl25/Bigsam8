@@ -1,22 +1,17 @@
 from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import numpy as np
-import streamlit as st
+from PIL import Image
 
-@st.cache(allow_output_mutation=True)
-def get_model():
-        model = load_model('Model/Traffic_Sign_Classifier_CNN.hdf5')
-        print('Model Loaded')
-        return model 
+# Load model once
+model = load_model('road_sign_model.h5')
 
-        
-def predict(image):
-        loaded_model = get_model()
-        image = load_img(image, target_size=(32, 32), color_mode = "grayscale")
-        image = img_to_array(image)
-        image = image/255.0
-        image = np.reshape(image,[1,32,32,1])
+def preprocess(image: Image.Image):
+    image = image.convert('RGB')
+    image = image.resize((30, 30))
+    img_array = np.array(image) / 255.0  # Normalize
+    return np.expand_dims(img_array, axis=0)
 
-        classes = loaded_model.predict_classes(image)
-
-        return classes
+def predict(image: Image.Image):
+    img = preprocess(image)
+    predictions = model.predict(img)
+    return np.argmax(predictions, axis=1)
